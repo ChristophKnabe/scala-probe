@@ -38,17 +38,17 @@ object ReportableDemo {
   }
 
   def report(reportable: Reportable): String = {
-    toReverseCauseList(reportable, Nil).reverse.map(_.message).mkString("\nCaused by ")
+    toReverseCauseList(reportable, Nil).reverseIterator.map(_.message).mkString("\nCaused by ")
   }
 
   /** Builds a reverse List of the [[Reportable]] and its causal chain by following the `.cause` link until `None` is reached. */
   @tailrec
   private def toReverseCauseList(causalChain: Reportable, accu: List[Reportable]): List[Reportable] = {
-    val causeOption = causalChain.cause
-    if (causeOption.isEmpty) {
-      return causalChain :: accu
+    val newAccu = causalChain :: accu
+    causalChain.cause match {
+      case None => newAccu
+      case Some(tailCausalChain) => toReverseCauseList(tailCausalChain, newAccu)
     }
-    toReverseCauseList(causeOption.get, causalChain :: accu)
   }
 
   def main(args: Array[String]): Unit = {
