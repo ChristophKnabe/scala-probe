@@ -9,7 +9,9 @@ version := "1.0"
 
 scalaVersion := "2.13.2"
 
-logLevel := Level.Debug
+logLevel := Level.Info
+
+addCompilerPlugin(scalafixSemanticdb("4.4.4"))
 
 val akkaVersion = "2.6.6"
 val mockitoScalaVersion = "1.14.8"
@@ -57,6 +59,8 @@ scapegoatVersion in ThisBuild := "1.4.4"
 // Configure by:
 // scapegoatDisabledInspections := Seq("ExpressionAsStatement", "VarUse")
 // scapegoatIgnoredFiles := Seq(".*/SomeScala.scala")
+
+scalafixDependencies in ThisBuild += "com.github.vovapolu" %% "scaluzzi" % "0.1.16"
 
 initialize := {
   val _ = initialize.value // run the previous initialization
