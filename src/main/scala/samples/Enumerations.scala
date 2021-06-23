@@ -58,12 +58,12 @@ object Enumerations extends App {
     SimpleDomainTypes.show(v)
   }
 
-  // c) Define a domain type with attributes, and all possible values.
+  // c) Define a domain type, and all possible values.
   // How: Use a sealed abstract marker trait with values as case objects.
   // Pro: Type-safely distinguish different domain types
   // Pro: Only the values in the same file can be constructed.
   // Pro: Compiler can warn if match is not exhaustive
-  // Contra: Technically uses n+1 classes (abstract class and all objects)
+  // Contra: Compiles to n+1 classes (abstract class and all objects)
   object ExhaustiveValuesDomainTypesSimple {
     sealed abstract trait JobStatus
 
@@ -89,7 +89,7 @@ object Enumerations extends App {
   // Pro: Type-safely distinguish different domain types
   // Pro: Only the values in the same file can be constructed.
   // Pro: Compiler can warn if match is not exhaustive
-  // Contra: Technically uses n+1 classes (abstract class and all objects)
+  // Contra: Compiles to n+1 classes (abstract class and all objects)
   object ExhaustiveValuesDomainTypesWithAttributes {
     sealed abstract class JobStatus private (val name: String)
 
