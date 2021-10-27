@@ -18,18 +18,24 @@ val mockitoScalaVersion = "1.14.8"
 
 libraryDependencies ++= Seq(
   "com.novocode" % "junit-interface" % "0.11" % "test",
-  "org.scalatest" %% "scalatest" % "3.0.8" % "test",
-  "org.scalatestplus" %% "scalatestplus-scalacheck" % "3.1.0.0-RC2" % Test,
+  //"org.scalatest" %% "scalatest" % "3.0.8" % "test",
+  //"org.scalatestplus" %% "scalatestplus-scalacheck" % "3.1.0.0-RC2" % Test,
+  //See https://www.scalatest.org/plus/scalacheck
+  "org.scalatestplus" %% "scalacheck-1-15" % "3.2.10.0" % Test,
+  "org.scalatest" %% "scalatest-funsuite" % "3.2.10" % Test,
+  "org.scalatest" %% "scalatest-funspec" % "3.2.10" % Test,
+  "org.scalatest" %% "scalatest-flatspec" % "3.2.10" % Test,
+  "org.scalatest" %% "scalatest-mustmatchers" % "3.2.10" % Test,
   "com.typesafe.akka" %% "akka-actor" % akkaVersion,
   "com.typesafe.akka" %% "akka-testkit" % akkaVersion,
   //See https://github.com/rickynils/scalacheck/blob/master/examples/simple-sbt/build.sbt
-  "org.scalacheck" %% "scalacheck" % "1.14.0" % "test",
+  //Included by "org.scalatestplus" %% "scalacheck-1-15":
+  //"org.scalacheck" %% "scalacheck" % "1.14.0" % "test",
   "org.mockito" %% "mockito-scala" % mockitoScalaVersion % Test,
   "org.mockito" %% "mockito-scala-scalatest" % mockitoScalaVersion % Test
-
   /*The operator %% builds an artifact name from the specified scalaVersionDependentArtifact name,
    * an underscore sign, and the upper mentioned scalaVersion.
-   * So the artifact name will result here in scalatest_2.12,
+   * So the artifact name will result here in e.g. scalatest_2.13,
    * as the last number in a Scala version is not API relevant.
    */
 )
