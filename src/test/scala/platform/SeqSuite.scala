@@ -34,5 +34,13 @@ class SeqSuite extends AnyFunSuite with Matchers {
     seq3.updated(2, "XXX") mustBe Seq("Alpha", "Beta", "XXX")
     assertThrows[IndexOutOfBoundsException] { seq3.updated(3, "XXX") }
   }
+  test("remove an element from a sequence by content") {
+    val seq = Seq("Alpha", "Beta", "Gamma")
+    seq.filter(_ != "XXX") mustBe Seq("Alpha", "Beta", "Gamma")
+    seq.filter(_ != "Alpha") mustBe Seq("Beta", "Gamma")
+    seq.filter(_ != "Beta") mustBe Seq("Alpha", "Gamma")
+    seq.filter(_ != "Gamma") mustBe Seq("Alpha", "Beta")
+    seq.withFilter(_ != "ABX")
+  }
 
 }

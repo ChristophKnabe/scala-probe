@@ -1,6 +1,7 @@
 #Do not version the following files. Knabe 2017-03-29
 
 #SBT generated, also in subdirectories:
+/.bsp/
 target/
 
 #IntelliJ IDEA generated:

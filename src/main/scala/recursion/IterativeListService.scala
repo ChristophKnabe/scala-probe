@@ -1,4 +1,4 @@
-package samples
+package recursion
 
 /**
   * Created by knabe on 27.03.17.
@@ -6,7 +6,7 @@ package samples
 class IterativeListService extends ListService {
 
   override def min(list: List[Int]): Int = {
-    var result      = Int.MaxValue
+    var result = Int.MaxValue
     var currentList = list
     while (currentList != Nil) {
       val value = currentList.head
